@@ -18,12 +18,11 @@ class Playing implements State {
     System.out.println("O aluno está se divertindo sozinho.");
     System.out.println("");
     
-    student.changeIntelligence(-2);
-    student.changeFun(6);
-    student.changeSocial(-2);
-    student.changeSleepiness(3);
-    student.changeHunger(10);
-    student.changeStress(-2);
+    student.change(Constraint.ignorance,2);
+    student.change(Constraint.loneliness,-2);
+    student.change(Constraint.sleepiness,3);
+    student.change(Constraint.hunger,10);
+    student.change(Constraint.stress,-2);
     
     //TO-DO: Change State Logic 
   }

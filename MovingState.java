@@ -18,10 +18,9 @@ class Moving implements State {
     System.out.println("O aluno está no ônibus.");
     System.out.println("");
     
-    student.changeSleepiness(3);
-    student.changeHunger(10);
-    student.changeStress(2);
-    
+    student.change(Constraint.sleepiness,3);
+    student.change(Constraint.hunger, 10);
+    student.change(Constraint.stress,2);
     //TO-DO: Change State Logic 
   }
   

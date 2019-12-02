@@ -1,3 +1,11 @@
+import processing.core.*;
+import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 Student student = new Student();
 Day day = new Day();
 Student state;
@@ -27,15 +35,55 @@ void draw(){
   } else if(day.getDay() == 100) {
     endSemester();   
   }
+  checkStatus();
+}
+
+void checkStatus() {
+  int max = Collections.max(student.stateConstraints.values());
+  Map<Constraint, Integer> stateConstraints = student.stateConstraints;
+  Constraint newStateConstraint = Constraint.sleepiness;
+  for (Map.Entry me : stateConstraints.entrySet()) {
+    if ((int)me.getValue() == max){
+      changeStatus((Constraint) me.getKey());
+    }
+  }
+}
+
+void changeStatus(Constraint constr) {
+  switch (constr) {
+      case loneliness:
+        State goingout = GoingOut.getInstance(student);
+        student.changeState(goingout);
+        break;
+      case ignorance:
+        State studying = Studying.getInstance(student);
+        student.changeState(studying);
+        break;
+      case hunger:
+        State eating = Eating.getInstance(student);
+        student.changeState(eating);
+        break;
+      case sleepiness:
+        State sleeping = Sleeping.getInstance(student);
+        student.changeState(sleeping);
+        break;
+      case stress:
+        State playing = Playing.getInstance(student);
+        student.changeState(playing);
+        break;
+      default: break;
+    }
+
 }
 
 void endSemester() {
   print("O semestre acabou!");
-  if(student.getGrades() >= 7) {
-    println("O aluno passou por média! Nota: " + student.getGrades());
-  } else if(student.getGrades() >= 5) {
-    println("O aluno passou na AF. Nota: " + student.getGrades());
+  int grade = student.getConstraint(Constraint.grades);
+  if(grade >= 7) {
+    println("O aluno passou por média! Nota: " + grade);
+  } else if(grade >= 5) {
+    println("O aluno passou na AF. Nota: " + grade);
   } else {
-    println("O aluno reprovou... Nota: " + student.getGrades());
+    println("O aluno reprovou... Nota: " + grade);
   }
 }

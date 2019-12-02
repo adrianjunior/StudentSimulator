@@ -1,18 +1,19 @@
 import processing.core.*;
+import java.util.HashMap;
+import java.util.Map;
 
 class Student {
-  private int hunger, social, fun, grades, sleepiness, stress, intelligence;
+  public Map<Constraint, Integer> stateConstraints = new HashMap<>();
   private State currentState;
   private State currentSecondState; //OnTestWeekState && OnNormalWeekState
   
   Student() {
-    social = 50;
-    fun = 50;
-    intelligence = 50;
-    hunger = 50;
-    sleepiness = 0;
-    stress = 0;
-    grades = 0;
+    stateConstraints.put(Constraint.loneliness, 50);
+    stateConstraints.put(Constraint.ignorance, 50);
+    stateConstraints.put(Constraint.hunger, 50);
+    stateConstraints.put(Constraint.sleepiness, 0);
+    stateConstraints.put(Constraint.stress, 0);
+    stateConstraints.put(Constraint.grades, 0);
   }
   
   void init() {
@@ -36,81 +37,16 @@ class Student {
     currentSecondState.enter();
   }
   
-  void changeHunger(int value){
-    hunger = hunger + value;
-    if(hunger <= 0) {
-       hunger = 0;
-    }
+  void change(Constraint constraint, int value) {
+      int newConstraintValue = stateConstraints.get(constraint);
+      newConstraintValue += value;
+      if(newConstraintValue <= 0) {
+         newConstraintValue = 0;
+      }
+      stateConstraints.put(constraint, newConstraintValue);
   }
   
-  void changeSocial(int value){
-    social = social + value;
-    if(social <= 0) {
-       social = 0;
-    }
-  }
-  
-  void changeFun(int value){
-    fun = fun + value;
-    if(fun <= 0) {
-       fun = 0;
-    }
-  }
-  
-  void changeIntelligence(int value){
-    intelligence = intelligence + value;
-    if(intelligence <= 0) {
-       intelligence = 0;
-    }
-  }
-  
-  void changeSleepiness(int value){
-    sleepiness = sleepiness + value;
-    if(sleepiness <= 0) {
-       sleepiness = 0;
-    }
-  }
-  
-  void changeStress(int value){
-    stress = stress + value;
-    if(stress <= 0) {
-       stress = 0;
-    }
-  }
-  
-  void setHunger(int value){
-    hunger = value;
-  }
-  
-  void setGrades(int value){
-    grades = value;
-  }
-  
-  int getHunger(){
-    return hunger;
-  }
-  
-  int getSocial(){
-    return social;
-  }
-  
-  int getFun(){
-    return fun;
-  }
-  
-  int getIntelligence(){
-    return intelligence;
-  }
-  
-  int getSleepiness(){
-    return sleepiness;
-  }
-  
-  int getStress(){
-    return stress;
-  }
-  
-  int getGrades(){
-    return grades;
+  int getConstraint(Constraint constraint) {
+    return stateConstraints.get(constraint);
   }
 }
