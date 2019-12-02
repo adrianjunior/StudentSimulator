@@ -42,7 +42,12 @@ void checkStatus() {
   int max = Collections.max(student.stateConstraints.values());
   Map<Constraint, Integer> stateConstraints = student.stateConstraints;
   Constraint newStateConstraint = Constraint.sleepiness;
-  for (Map.Entry me : stateConstraints.entrySet()) {
+  for (Map.Entry me : stateConstraints.entrySet()) { 
+      print(me + " e ");
+  }
+  println();
+  
+  for (Map.Entry me : stateConstraints.entrySet()) { 
     if ((int)me.getValue() == max){
       changeStatus((Constraint) me.getKey());
     }
