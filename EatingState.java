@@ -18,8 +18,8 @@ class Eating implements State {
     System.out.println("O aluno está comendo.");
     System.out.println("");
     
-    student.changeSleepiness(6);
-    student.setHunger(0);
+    student.change(Constraint.sleepiness,6);
+    student.change(Constraint.hunger,0);
     
     //TO-DO: Change State Logic 
   }

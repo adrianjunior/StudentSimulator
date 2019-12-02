@@ -18,9 +18,9 @@ class Sleeping implements State {
     System.out.println("O aluno está dormindo.");
     System.out.println("");
     
-    student.changeSleepiness(-6);
-    student.changeHunger(10);
-    student.changeStress(-1);
+    student.change(Constraint.sleepiness, -6);
+    student.change(Constraint.hunger, 10);
+    student.change(Constraint.stress, -1);
     
     //TO-DO: Change State Logic
   }

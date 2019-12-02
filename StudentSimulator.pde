@@ -31,11 +31,12 @@ void draw(){
 
 void endSemester() {
   print("O semestre acabou!");
-  if(student.getGrades() >= 7) {
-    println("O aluno passou por média! Nota: " + student.getGrades());
-  } else if(student.getGrades() >= 5) {
-    println("O aluno passou na AF. Nota: " + student.getGrades());
+  int grade = student.getConstraint(Constraint.grades);
+  if(grade >= 7) {
+    println("O aluno passou por média! Nota: " + grade);
+  } else if(grade >= 5) {
+    println("O aluno passou na AF. Nota: " + grade);
   } else {
-    println("O aluno reprovou... Nota: " + student.getGrades());
+    println("O aluno reprovou... Nota: " + grade);
   }
 }

@@ -18,12 +18,12 @@ class Studying implements State {
     System.out.println("O aluno está estudando.");
     System.out.println("");
     
-    student.changeIntelligence(6);
-    student.changeFun(-6);
-    student.changeSocial(-3);
-    student.changeSleepiness(3);
-    student.changeHunger(10);
-    student.changeStress(5);
+    student.change(Constraint.intelligence, 6);
+    student.change(Constraint.fun, -6);
+    student.change(Constraint.social, -3);
+    student.change(Constraint.sleepiness, 3);
+    student.change(Constraint.hunger, 10);
+    student.change(Constraint.stress, 5);
  
     //TO-DO: Change State Logic 
   }

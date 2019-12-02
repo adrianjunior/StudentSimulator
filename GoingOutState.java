@@ -17,11 +17,11 @@ class GoingOut implements State {
   public void execute(){
     System.out.println("O aluno está na balada se divertindo com os amigos.");
     System.out.println("");
-    
-    student.changeIntelligence(-2);
-    student.changeFun(3);
-    student.changeSocial(15);
-    student.changeSleepiness(3);
+
+    student.change(Constraint.intelligence,-2);
+    student.change(Constraint.fun,3);
+    student.change(Constraint.social,15);
+    student.change(Constraint.sleepiness,3);
     
     //TO-DO: Change State Logic 
   }
