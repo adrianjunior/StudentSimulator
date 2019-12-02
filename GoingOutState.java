@@ -18,7 +18,7 @@ class GoingOut implements State {
     System.out.println("O aluno está se divertindo com os amigos.");
     System.out.println("");
 
-    student.change(Constraint.ignorance,2);
+    student.change(Constraint.ignorance,-2);
     student.change(Constraint.stress,-3);
     student.change(Constraint.loneliness,-15);
     student.change(Constraint.sleepiness,3);

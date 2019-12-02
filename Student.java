@@ -8,9 +8,9 @@ class Student {
   private State currentSecondState; //OnTestWeekState && OnNormalWeekState
   
   Student() {
-    stateConstraints.put(Constraint.loneliness, 50);
-    stateConstraints.put(Constraint.ignorance, 50);
-    stateConstraints.put(Constraint.hunger, 50);
+    stateConstraints.put(Constraint.loneliness, 0);
+    stateConstraints.put(Constraint.ignorance, 0);
+    stateConstraints.put(Constraint.hunger, 0);
     stateConstraints.put(Constraint.sleepiness, 0);
     stateConstraints.put(Constraint.stress, 0);
     stateConstraints.put(Constraint.grades, 0);

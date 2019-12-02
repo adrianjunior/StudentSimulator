@@ -19,7 +19,7 @@ class Playing implements State {
     System.out.println("");
     
     student.change(Constraint.ignorance,2);
-    student.change(Constraint.loneliness,-2);
+    student.change(Constraint.loneliness,2);
     student.change(Constraint.sleepiness,3);
     student.change(Constraint.hunger,10);
     student.change(Constraint.stress,-2);

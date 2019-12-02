@@ -6,7 +6,7 @@ class Eating implements State {
   
   private static final Eating instance = new Eating();
   
-  public Eating(){}
+  private Eating(){}
 
   public static Eating getInstance(Student s){
     instance.student = s;
@@ -19,7 +19,8 @@ class Eating implements State {
     System.out.println("");
     
     student.change(Constraint.sleepiness, 6);
-    student.change(Constraint.hunger,-5);
+    student.change(Constraint.ignorance, 3);
+    student.change(Constraint.hunger,-10);
     
     //TO-DO: Change State Logic 
   }
