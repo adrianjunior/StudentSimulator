@@ -18,9 +18,8 @@ class Playing implements State {
     System.out.println("O aluno está se divertindo sozinho.");
     System.out.println("");
     
-    student.change(Constraint.intelligence,-2);
-    student.change(Constraint.fun,6);
-    student.change(Constraint.social,-2);
+    student.change(Constraint.ignorance,2);
+    student.change(Constraint.loneliness,-2);
     student.change(Constraint.sleepiness,3);
     student.change(Constraint.hunger,10);
     student.change(Constraint.stress,-2);

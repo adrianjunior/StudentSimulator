@@ -3,5 +3,5 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum Constraint {
-  social, fun, intelligence, hunger, sleepiness, stress, grades;
+  loneliness, ignorance, hunger, sleepiness, stress, grades;
 }

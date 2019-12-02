@@ -15,24 +15,24 @@ class GoingOut implements State {
   }
   
   public void execute(){
-    System.out.println("O aluno está na balada se divertindo com os amigos.");
+    System.out.println("O aluno está se divertindo com os amigos.");
     System.out.println("");
 
-    student.change(Constraint.intelligence,-2);
-    student.change(Constraint.fun,3);
-    student.change(Constraint.social,15);
+    student.change(Constraint.ignorance,2);
+    student.change(Constraint.stress,-3);
+    student.change(Constraint.loneliness,-15);
     student.change(Constraint.sleepiness,3);
     
     //TO-DO: Change State Logic 
   }
   
   public void enter(){
-    System.out.println("O chegou na balada.");
+    System.out.println("O chegou no encontro com seus amigos.");
     System.out.println("");
   }
   
   public void leave(){
-    System.out.println("O aluno saiu da balada.");
+    System.out.println("O aluno saiu do encontro com seus amigos.");
     System.out.println("");
   }
 }

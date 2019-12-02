@@ -18,9 +18,8 @@ class Studying implements State {
     System.out.println("O aluno está estudando.");
     System.out.println("");
     
-    student.change(Constraint.intelligence, 6);
-    student.change(Constraint.fun, -6);
-    student.change(Constraint.social, -3);
+    student.change(Constraint.ignorance, 6);
+    student.change(Constraint.loneliness, -3);
     student.change(Constraint.sleepiness, 3);
     student.change(Constraint.hunger, 10);
     student.change(Constraint.stress, 5);

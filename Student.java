@@ -3,14 +3,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 class Student {
-  private Map<Constraint, Integer> stateConstraints = new HashMap<>();
+  public Map<Constraint, Integer> stateConstraints = new HashMap<>();
   private State currentState;
   private State currentSecondState; //OnTestWeekState && OnNormalWeekState
   
   Student() {
-    stateConstraints.put(Constraint.social, 50);
-    stateConstraints.put(Constraint.fun, 50);
-    stateConstraints.put(Constraint.intelligence, 50);
+    stateConstraints.put(Constraint.loneliness, 50);
+    stateConstraints.put(Constraint.ignorance, 50);
     stateConstraints.put(Constraint.hunger, 50);
     stateConstraints.put(Constraint.sleepiness, 0);
     stateConstraints.put(Constraint.stress, 0);

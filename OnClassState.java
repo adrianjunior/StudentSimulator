@@ -18,8 +18,7 @@ class OnClass implements State {
     System.out.println("O aluno está na aula.");
     System.out.println("");
     
-    student.change(Constraint.intelligence,6);
-    student.change(Constraint.fun,-6);
+    student.change(Constraint.ignorance,6);
     student.change(Constraint.sleepiness,3);
     student.change(Constraint.hunger,10);
     student.change(Constraint.stress,3);

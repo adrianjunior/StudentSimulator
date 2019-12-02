@@ -10,20 +10,19 @@ class Sleeping implements State {
   
   public static Sleeping getInstance(Student s){
     instance.student = s;
-    
     return instance;
   }
   
   public void execute(){
     System.out.println("O aluno está dormindo.");
     System.out.println("");
-    
     student.change(Constraint.sleepiness, -6);
     student.change(Constraint.hunger, 10);
     student.change(Constraint.stress, -1);
     
     //TO-DO: Change State Logic
   }
+ 
   
   public void enter(){
     System.out.println("O Aluno se arrumou para dormir.");
