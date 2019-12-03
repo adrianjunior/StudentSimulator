@@ -17,6 +17,11 @@ class Day {
        return time;
      }
      
+     int getTimeInInt(int counter) {
+       float timeMinAgr = 30*counter;
+       return (int) timeMinAgr/60;
+     }
+     
      void newDay() {
        count++;
      }

@@ -1,5 +1,7 @@
 import processing.core.*;
 import java.util.Random;
+import java.util.*;
+
 
 class Eating implements State {
   Student student;
@@ -7,8 +9,10 @@ class Eating implements State {
   private static final Eating instance = new Eating();
   
   private Eating(){}
+  public int timerMultiplier;
 
-  public static Eating getInstance(Student s){
+  public static Eating getInstance(Student s, int timerMultiplier){
+    instance.timerMultiplier = timerMultiplier;
     instance.student = s;
     
     return instance;
@@ -17,8 +21,7 @@ class Eating implements State {
   public void execute(){
     System.out.println("O aluno está comendo.");
     System.out.println("");
-    
-    student.change(Constraint.sleepiness, 6);
+    student.change(Constraint.sleepiness, (int)0.5*timerMultiplier);
     student.change(Constraint.ignorance, 3);
     student.change(Constraint.hunger,-10);
     

@@ -48,33 +48,60 @@ void checkStatus() {
   println();
   
   for (Map.Entry me : stateConstraints.entrySet()) { 
-    if ((int)me.getValue() == max){
+    if ((int)me.getValue() == max && checkIfCanChangeState()){
       changeStatus((Constraint) me.getKey());
-    }
+    } 
   }
 }
 
+boolean checkIfCanChangeState() {
+   State studentState = student.getState();
+   if ((studentState == Sleeping.getInstance(student, day.getTimeInInt(counter))) && (student.getConstraint(Constraint.sleepiness) > 3)) {
+         return false;
+   } else if ((studentState == Eating.getInstance(student, day.getTimeInInt(counter))) && (student.getConstraint(Constraint.hunger) > 5)) {
+         return false;
+   } else if ((studentState == Studying.getInstance(student, day.getTimeInInt(counter))) && (student.getConstraint(Constraint.ignorance) > 5)) {
+         return false;
+   }
+   return true;
+}
+
 void changeStatus(Constraint constr) {
+  if (!checkIfCanChangeState()) {
+    return;
+  }
+  int dayHour = day.getTimeInInt(counter);
   switch (constr) {
       case loneliness:
-        State goingout = GoingOut.getInstance(student);
+        State goingout = GoingOut.getInstance(student, dayHour);
+        if(student.getState() != goingout) {
+          student.changeState(goingout);
+        }
         student.changeState(goingout);
         break;
       case ignorance:
-        State studying = Studying.getInstance(student);
-        student.changeState(studying);
+        State studying = Studying.getInstance(student, dayHour);
+        if(student.getState() !=  studying) {
+          student.changeState(studying);
+        }
         break;
       case hunger:
-        State eating = Eating.getInstance(student);
-        student.changeState(eating);
+        if(student.getConstraint(Constraint.hunger) > 40) {
+          State eating = Eating.getInstance(student, dayHour);
+          student.changeState(eating);
+        }
         break;
       case sleepiness:
-        State sleeping = Sleeping.getInstance(student);
-        student.changeState(sleeping);
+        State sleeping = Sleeping.getInstance(student, dayHour);
+        if(student.getConstraint(Constraint.sleepiness) > 80 && (student.getState() !=  sleeping)) {
+          student.changeState(sleeping);
+        }
         break;
       case stress:
-        State playing = Playing.getInstance(student);
-        student.changeState(playing);
+        State playing = Playing.getInstance(student, dayHour);
+        if(student.getState() !=  playing) {
+          student.changeState(playing);
+        }
         break;
       default: break;
     }

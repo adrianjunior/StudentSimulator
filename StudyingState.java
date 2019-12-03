@@ -7,8 +7,11 @@ class Studying implements State {
   private static final Studying instance = new Studying();
   
   private Studying(){}
+  public int timerMultiplier;
+
   
-  public static Studying getInstance(Student s){
+  public static Studying getInstance(Student s, int timerMultiplier){
+    instance.timerMultiplier = timerMultiplier;
     instance.student = s;
     
     return instance;
@@ -20,8 +23,8 @@ class Studying implements State {
     
     student.change(Constraint.ignorance, -10);
     student.change(Constraint.loneliness, 3);
-    student.change(Constraint.sleepiness, 3);
-    student.change(Constraint.hunger, 10);
+    student.change(Constraint.sleepiness, (int)1.3*timerMultiplier);
+    student.change(Constraint.hunger, 4);
     student.change(Constraint.stress, 5);
  
     //TO-DO: Change State Logic 
