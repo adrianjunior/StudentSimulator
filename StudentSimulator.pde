@@ -58,11 +58,16 @@ boolean checkIfCanChangeState() {
    State studentState = student.getState();
    if ((studentState == Sleeping.getInstance(student, day.getTimeInInt(counter))) && (student.getConstraint(Constraint.sleepiness) > 3)) {
          return false;
-   } else if ((studentState == Eating.getInstance(student, day.getTimeInInt(counter))) && (student.getConstraint(Constraint.hunger) > 5)) {
-         return false;
-   } else if ((studentState == Studying.getInstance(student, day.getTimeInInt(counter))) && (student.getConstraint(Constraint.ignorance) > 5)) {
+   }
+   
+   if ((studentState == Eating.getInstance(student, day.getTimeInInt(counter))) && (student.getConstraint(Constraint.hunger) > 5)) {
          return false;
    }
+   
+   if ((studentState == Studying.getInstance(student, day.getTimeInInt(counter))) && (student.getConstraint(Constraint.ignorance) > 5)) {
+         return false;
+   }
+   
    return true;
 }
 
@@ -86,14 +91,14 @@ void changeStatus(Constraint constr) {
         }
         break;
       case hunger:
-        if(student.getConstraint(Constraint.hunger) > 40) {
+        if(student.getConstraint(Constraint.hunger) > 40 || (student.getConstraint(Constraint.sleepiness) < 3)) {
           State eating = Eating.getInstance(student, dayHour);
           student.changeState(eating);
         }
         break;
       case sleepiness:
         State sleeping = Sleeping.getInstance(student, dayHour);
-        if(student.getConstraint(Constraint.sleepiness) > 80 && (student.getState() !=  sleeping)) {
+        if((student.getConstraint(Constraint.sleepiness) > 80 && (student.getState() !=  sleeping))|| (student.getConstraint(Constraint.hunger) < 3)) {
           student.changeState(sleeping);
         }
         break;
