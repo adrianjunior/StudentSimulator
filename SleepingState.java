@@ -6,9 +6,12 @@ class Sleeping implements State {
   
   private static final Sleeping instance = new Sleeping();
   
+  public int timerMultiplier;  
+  
   private Sleeping(){}
   
-  public static Sleeping getInstance(Student s){
+  public static Sleeping getInstance(Student s, int timerMultiplier){
+    instance.timerMultiplier = timerMultiplier;
     instance.student = s;
     return instance;
   }
@@ -19,9 +22,7 @@ class Sleeping implements State {
     student.change(Constraint.sleepiness, -10);
     student.change(Constraint.hunger, 2);
     student.change(Constraint.ignorance, 3);
-    student.change(Constraint.stress, -1);
-    
-    //TO-DO: Change State Logic
+    student.change(Constraint.stress, -1);    
   }
  
   

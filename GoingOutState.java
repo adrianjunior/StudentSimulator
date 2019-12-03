@@ -7,8 +7,10 @@ class GoingOut implements State {
   private static final GoingOut instance = new GoingOut();
   
   private GoingOut(){}
-
-  public static GoingOut getInstance(Student s){
+  
+  public int timerMultiplier;
+  public static GoingOut getInstance(Student s, int timerMultiplier){
+    instance.timerMultiplier = timerMultiplier;
     instance.student = s;
     
     return instance;
@@ -21,7 +23,7 @@ class GoingOut implements State {
     student.change(Constraint.ignorance,-2);
     student.change(Constraint.stress,-3);
     student.change(Constraint.loneliness,-15);
-    student.change(Constraint.sleepiness,3);
+    student.change(Constraint.sleepiness, timerMultiplier);
     
     //TO-DO: Change State Logic 
   }

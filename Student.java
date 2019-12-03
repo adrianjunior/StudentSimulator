@@ -17,12 +17,16 @@ class Student {
   }
   
   void init() {
-    currentState = Sleeping.getInstance(this);
+    currentState = Sleeping.getInstance(this, 0);
     currentSecondState = OnNormalWeek.getInstance(this);
   }
   
   void update() {
     currentState.execute();
+  }
+  
+  State getState() {
+    return currentState;
   }
   
   void changeState(State newState){
